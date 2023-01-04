@@ -16,23 +16,17 @@ const newTable=():void=>{
 const params = {
   AttributeDefinitions: [
     {
-      AttributeName: 'ID',
-      AttributeType: 'N'
-    },
-    {
-      AttributeName: 'NAME',
+      AttributeName: 'Studentid',
       AttributeType: 'S'
     }
+
   ],
   KeySchema: [
     {
-      AttributeName: 'ID',
+      AttributeName: 'Studentid',
       KeyType: 'HASH'
-    },
-    {
-      AttributeName: 'NAME',
-      KeyType: 'RANGE'
     }
+   
   ],
   ProvisionedThroughput: {
     ReadCapacityUnits: 5,
@@ -49,7 +43,9 @@ db.createTable(params,(err:Error, data)=> {
   if (err) {
     console.log("Error", err);
   } else {
+    
     console.log("Success", data);
+    return ({status:true})
   }
 });
 }
